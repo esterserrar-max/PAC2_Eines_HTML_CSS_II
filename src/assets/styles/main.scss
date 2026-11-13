@@ -1,0 +1,19 @@
+/**
+ * Use this file to import partials.
+ * Do not include SCSS code in this file.
+ */
+
+/**
+ * Import dependencies & variables first
+ */
+@import "variables"; 
+
+/**
+ * Import Bootstrap from node_modules
+ */
+@import "bootstrap/scss/bootstrap";
+
+/**
+ * Import layouts
+ */
+@import "layouts/l-main";
