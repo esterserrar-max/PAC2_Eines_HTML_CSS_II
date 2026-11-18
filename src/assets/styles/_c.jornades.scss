@@ -1,0 +1,147 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+// 1. Contenidor pare que posa el sidebar a l'esquerra i el contingut a la dreta
+.l-layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  width: 100%;
+}
+
+// 2. Estils del Sidebar (Columna esquerra)
+.c-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 0 0 320px; // Amplada fixa de la columna esquerra
+  min-height: 100vh;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+}
+
+.l-jornades-main{
+    display: flex;
+    flex-direction: column; // <--- CLAU: Ara els elements s'apilaran correctament de dalt a baix
+    flex: 1;                // <--- Ocupa tot l'espai restant a la dreta del sidebar
+    padding: 2rem;          // <--- Marges interns generals per a tot el contingut
+    box-sizing: border-box;
+}
+
+
+.c-jornades__header{
+  background-color: rgb(51 130 17);
+  color: white;
+  margin: 0;
+  
+  // Treiem qualsevol truc de vw o marges negatius que provoqui overflow
+  width: 100%;
+  box-sizing: border-box;
+  
+  // Padding vertical i lateral segur per a mòbils de 350px
+  padding: 2.5rem 1.5rem;
+    
+  .c-jornades__main-title{
+        font-family: $font-family-poster;
+        font-size: 2.5rem;
+        font-weight: 900;
+    }
+    
+}
+
+.c-quote-background{
+    background-color: rgb(187 160 120);
+  margin: 0;
+  margin-top: 2rem;
+  
+  // Assegurem l'amplada total sense desplaçaments estranys
+  width: 100%;
+  box-sizing: border-box;
+  
+  // Padding generós dalt i baix, i padding lateral de seguretat 
+  // perquè el text NO s'enganxi mai a la vora de la pantalla en mòbils de 350px
+  padding: 2rem 1.5rem;
+  
+  // Si necessites que el text quedi centrat o ben alineat dins de la franja:
+  text-align: left;
+
+
+.c-quote{
+    padding: 0.5rem;
+    text-align: justify;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    .c-quote__text{
+        font-family: $font-family-quote;
+        font-style: italic;
+        font-size: 1.1em;
+    }
+}
+
+.c-quote-footer{
+    font-family: $font-family-footer;
+}
+}
+
+.c-jornades__article{
+    margin: 3rem 0;
+    padding-top: 2rem;
+    font-family: $font-family;
+
+    h2{
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+    h3{
+        font-size: 1.8rem;
+        text-decoration: underline;
+    }
+
+    p{
+        font-size: 1.2rem;
+        text-align: justify;
+        padding: 0.7rem 0.3rem;
+        font-family: $font-family-footer;
+    }
+
+    a{
+        background-color: rgb(51 130 17);
+        color: white;
+        padding: 0.5rem;
+    }
+    
+}
+
+.c-jornades__section{
+    padding: 2rem 0;
+}
+
+.c-jornades-titol__gallery{
+    font-family: $font-family-footer;
+    padding: 2rem 0;
+
+}
+
+// Aplica una línia entre seccions successives dins de l'article
+.c-jornades__section + .c-jornades__section {
+  border-top: 4px solid rgb(187 160 120 / 40%); // Fes servir un to càlid o del color de la paleta
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+}
+
+.c-divider {
+  border: none;              // Treu l'estil per defecte del navegador
+  border-top: 4px solid rgb(187 160 120); // Linia sòlida amb el teu color càlid
+  width: 100%;               // Ocupa tot l'ample (o posa-li un 80% si la vols centrada i curta)
+  margin: 3rem 0;            // Espai dalt i baix perquè respiri
+}

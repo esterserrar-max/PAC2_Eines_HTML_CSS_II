@@ -5,11 +5,16 @@
 
 // Font style
 
-@import 'https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Metamorphous&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap';
+@import 'https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Eagle+Lake&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=IM+Fell+Double+Pica:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Metamorphous&family=Oldenburg&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap';
 
-$font-family-poster: metamorphous;
+$font-family-poster: metamorphous, serif;
+$font-family-text: caudex, serif;
+$font-family-quote: eagle lake, cursive;
+$font-family-footer: im fell double pica, serif; 
+$font-family: oldenburg, serif;
 
 // Font colour
+$font-textcolor: #ffff;
 $success: rgb(87 215 67);
 $error: rgb(219 44 44);
 $warning: rgb(236 137 80);
