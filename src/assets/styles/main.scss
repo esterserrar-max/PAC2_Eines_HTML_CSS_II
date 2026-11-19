@@ -3,6 +3,8 @@
  * Do not include SCSS code in this file.
  */
 
+
+
 /**
  * Import dependencies & variables first
  */
@@ -20,3 +22,5 @@
 @import "./c.jornades";
 @import "./layouts/c-sidebar";
 @import "./layouts/c-gallery";
+@import "./layouts/c-header";
+@import "./layouts/programacio";

@@ -1,0 +1,227 @@
+@use "../variables";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+// 1. Contenidor pare que posa el sidebar a l'esquerra i el contingut a la dreta
+.l-layout {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.l-programacio-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;       // Ocupa tot l'espai restant a la dreta del sidebar
+  padding: 2rem; // Marges interns generals per a tot el contingut
+  box-sizing: border-box;
+}
+
+.c-programacio__header {
+  // 1. Foto de fons amb capa lila fosca per sobre
+  background-image:
+    linear-gradient($lila-fosc-15, $lila-fosc-20),
+    url('/src/assets/images/ponencies.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  // 2. Ombra interior difuminada per donar profunditat al paisatge
+  box-shadow:
+    inset 0 0 60px $negre-25,
+    0 4px 12px $gris-ombra-30;
+
+  // 3. Centrat i espaiat segur
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 320px;
+  border-bottom: 3px solid $color-daurat-calid;
+
+  // Padding vertical i lateral segur per a mòbils de 350px
+  padding: 2.5rem 1.5rem;
+
+  .c-programacio__main-title {
+    font-family: $font-family-poster;
+    font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    color: $color-blanc-trencat;
+    margin: 0;
+    text-shadow: 0 2px 14px $negre-55;
+  }
+}
+
+.c-programacio__hero-credit {
+  bottom: 0.75rem;
+  margin: 0;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  display: flex;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-align: right;
+
+  // En pantalles molt estretes (350px) el centrem perquè no xoquí amb les vores
+  @media (width <= 480px) {
+    left: 1rem;
+    right: 1rem;
+    text-align: center;
+  }
+}
+
+.c-activities__hero{
+/* stylelint-disable-next-line nesting-selector-no-missing-scoping-root */
+&__kicker {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: variables.$color-daurat-clar;
+    margin-bottom: 0.5rem;
+  }
+
+  /* stylelint-disable-next-line nesting-selector-no-missing-scoping-root */
+  &__title {
+    font-family: variables.$font-family-poster;
+    font-size: clamp(1.9rem, 3.5vw, 2.75rem);
+    line-height: 1.15;
+    margin: 0 0 0.85rem;
+    color: variables.$color-blanc-trencat;
+  }
+
+  /* stylelint-disable-next-line nesting-selector-no-missing-scoping-root */
+  &__lead {
+    max-width: 65ch;
+    font-size: 1rem;
+    line-height: 1.65;
+    color: variables.$color-gris-clar;
+    margin: 0;
+  }
+
+  /* stylelint-disable-next-line nesting-selector-no-missing-scoping-root */
+  &__section {
+    padding: 1rem 0 2rem;
+  }
+}
+
+.c-activities__section{
+
+  /* stylelint-disable-next-line nesting-selector-no-missing-scoping-root */
+  &__section-head {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      font-weight: 700;
+      color: variables.$color-lila-fosc;
+      padding-bottom: 0.45rem;
+      border-bottom: 2px solid variables.$color-daurat-calid;
+      margin-bottom: 0.65rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: variables.$lila-fosc-80;
+    }
+  }
+
+
+// Retícula maquetada amb Flexbox (sense classes .row ni .col-* de Bootstrap)
+.c-speakers-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.c-speaker-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(50% - 0.75rem);
+  min-width: 280px;
+  background-color: variables.$color-pergamí;
+  border: 1px solid variables.$color-daurat-calid;
+  border-left: 5px solid variables.$color-lila-fosc;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px variables.$negre-20;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px variables.$lila-fosc-25;
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  &__slot {
+    font-weight: 700;
+    color: variables.$color-lila-mitja;
+  }
+
+  &__role {
+    background-color: variables.$color-lila-fosc;
+    color: variables.$color-daurat-clar;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+
+  &__name {
+    font-family: variables.$font-family-poster;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: variables.$color-lila-fosc;
+    margin-bottom: 0.25rem;
+  }
+
+  &__affiliation {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: variables.$color-lila-mitja;
+    margin-bottom: 0.9rem;
+  }
+
+  &__topic {
+    margin-top: auto;
+    font-family: variables.$font-family-quote;
+    font-style: italic;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: variables.$color-lila-fosc;
+  }
+}
+}
+
+@media (width <= 640px) {
+  .c-speaker-card {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+}

@@ -1,0 +1,112 @@
+.c-site-nav {
+  background-color: #241338;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 2px solid #bba078;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  :is(a, .c-site-nav__link) {
+    position: relative;
+    display: inline-block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.35rem 0;
+    transition: color 0.25s ease, transform 0.25s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #bba078;
+      border-radius: 999px;
+      transform: scaleX(0);
+      transform-origin: center; // Prova "left" si prefereixes que creixi d'esquerra a dreta
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: #f3e5ab;
+      transform: translateY(-2px);
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  // Botó destacat (Inscripció): animació de pols suau i elevació
+  .c-site-nav__link--cta {
+    padding: 0.45rem 1rem;
+    background-color: #bba078;
+    color: #241338;
+    font-weight: 700;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+    transition:
+      background-color 0.25s ease,
+      color 0.25s ease,
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.25s ease;
+
+    &::after {
+      display: none;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background-color: #f3e5ab;
+      color: #241338;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 14px rgb(187 160 120 / 35%);
+    }
+  }
+  
+}
+
+.c-site-header__burger {
+  display: none;
+}
+
+@media (width <= 768px) {
+  .c-site-header__burger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    background-color: #241338;
+    color: #f3e5ab;
+    border: 1px solid #bba078;
+    border-radius: 6px;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+
+  .c-site-nav {
+    display: none;
+
+    &.is-open {
+      display: block;
+    }
+
+    .c-site-nav__list {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+    }
+  }
+}

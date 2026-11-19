@@ -13,11 +13,54 @@ $font-family-quote: eagle lake, cursive;
 $font-family-footer: im fell double pica, serif; 
 $font-family: oldenburg, serif;
 
-// Font colour
-$font-textcolor: #ffff;
-$success: rgb(87 215 67);
-$error: rgb(219 44 44);
-$warning: rgb(236 137 80);
+
+// ==========================================================================
+// Variables de color — Jornades d'Història Medieval
+// ==========================================================================
+
+// 1. Colors base de la paleta
+$color-lila-fosc: #241338;
+$color-lila-profund: rgb(48 7 53); // #300735 — Secció destacada fosca
+$color-lila-mitja: #572e85;        // Capitular de cita (.c-quote__dropcap)
+
+$color-daurat-calid: #bba078;
+$color-daurat-clar: #f3e5ab;
+$color-pergamí: rgb(231 215 191);  // #e7d7bf — Fons de cita (.c-quote-background)
+
+// 2. Neutres i textos
+$color-blanc-trencat: #f8f5fc;
+$color-blanc-suau: #faf9fb;
+$color-gris-clar: #d6d3d9;
+$color-gris-ombra: rgb(75 74 74);
+$color-negre: rgb(0 0 0);
+
+// 3. Variants amb opacitat (per a capes, vores, textos secundaris i ombres)
+$lila-fosc-15: rgb(36 19 56 / 15%);
+$lila-fosc-20: rgb(36 19 56 / 20%);
+$lila-fosc-25: rgb(36 19 56 / 25%);
+$lila-fosc-30: rgb(36 19 56 / 30%);
+$lila-fosc-80: rgb(36 19 56 / 80%);
+$lila-fosc-90: rgb(36 19 56 / 90%);
+$daurat-calid-40: rgb(187 160 120 / 40%);
+$daurat-calid-45: rgb(187 160 120 / 45%);
+$daurat-clar-45: rgb(243 229 171 / 45%);
+$negre-25: rgb(0 0 0 / 25%);
+$negre-55: rgb(0 0 0 / 55%);
+$gris-ombra-30: rgb(75 74 74 / 30%);
+$color-blanc: #fff;
+$negre-20: rgb(0 0 0 / 20%);
+$daurat-calid-35: rgb(187 160 120 / 35%);
+
+
+// ==========================================================================
+// Variables addicionals per al Sidebar
+// ==========================================================================
+
+$sidebar-overlay-60: rgb(10 10 30 / 60%);
+$sidebar-overlay-65: rgb(10 10 30 / 65%);
+$sidebar-border-20: rgb(255 255 255 / 20%);
+$sidebar-date-85: rgb(255 255 255 / 85%);
+
 
 // Components colour
 $btn-colour: rgb(245 242 242);

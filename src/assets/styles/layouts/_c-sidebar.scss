@@ -17,13 +17,15 @@
   
   // Fons i control de la imatge per evitar el super-zoom
   // Fons i imatge
-  background: linear-gradient(rgb(10 10 30 / 75%), rgb(10 10 30 / 65%)), 
-              url('/src/assets/images/vitrall3.jpg');
+    background:
+    linear-gradient(variables.$sidebar-overlay-60, variables.$sidebar-overlay-65),
+    url('/src/assets/images/vitrall3.jpg');
   background-repeat: repeat;
-  background-size: contain; 
+  background-size: contain;
   background-position: center center;
   backdrop-filter: blur(4px);
-  border-right: 2px solid rgb(255 255 255 / 20%);
+  border-right: 2px solid variables.$sidebar-border-20;
+
 
 
   &__header {
@@ -35,9 +37,12 @@
       line-height: 1.2;
       margin-bottom: 1rem;
       color: white;
-      
-      a {
-        color: #fff;
+    }
+
+    .c-jornades__inscripcio-link{
+        background-color: white;
+        color: #010101;
+        padding: 0.5rem;
         text-decoration: none;
         transition: color 0.3s ease;
 
@@ -46,7 +51,6 @@
           color: #00f3ff;
         }
       }
-    }
 
     .l-main__poster-date {
       font-size: 1.1rem;

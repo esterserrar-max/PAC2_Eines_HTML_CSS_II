@@ -1,12 +1,14 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-a{
-    text-decoration: none;
-    cursor: pointer;
+a {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 // 1. Contenidor pare que posa el sidebar a l'esquerra i el contingut a la dreta
@@ -28,120 +30,272 @@ a{
   box-sizing: border-box;
 }
 
-.l-jornades-main{
-    display: flex;
-    flex-direction: column; // <--- CLAU: Ara els elements s'apilaran correctament de dalt a baix
-    flex: 1;                // <--- Ocupa tot l'espai restant a la dreta del sidebar
-    padding: 2rem;          // <--- Marges interns generals per a tot el contingut
-    box-sizing: border-box;
+.l-jornades-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;       // Ocupa tot l'espai restant a la dreta del sidebar
+  padding: 2rem; // Marges interns generals per a tot el contingut
+  box-sizing: border-box;
 }
 
+.c-jornades__header {
+  // 1. Foto de fons amb capa lila fosca per sobre
+  background-image:
+    linear-gradient($lila-fosc-15, $lila-fosc-20),
+    url('/src/assets/images/hero.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-.c-jornades__header{
-  background-color: rgb(51 130 17);
-  color: white;
-  margin: 0;
-  
-  // Treiem qualsevol truc de vw o marges negatius que provoqui overflow
-  width: 100%;
-  box-sizing: border-box;
-  
+  // 2. Ombra interior difuminada per donar profunditat al paisatge
+  box-shadow:
+    inset 0 0 60px $negre-25,
+    0 4px 12px $gris-ombra-30;
+
+  // 3. Centrat i espaiat segur
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 320px;
+  border-bottom: 3px solid $color-daurat-calid;
+
   // Padding vertical i lateral segur per a mòbils de 350px
   padding: 2.5rem 1.5rem;
-    
-  .c-jornades__main-title{
-        font-family: $font-family-poster;
-        font-size: 2.5rem;
-        font-weight: 900;
-    }
-    
+
+  .c-jornades__main-title {
+    font-family: $font-family-poster;
+    font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    color: $color-blanc-trencat;
+    margin: 0;
+    text-shadow: 0 2px 14px $negre-55;
+  }
+
+  &:has(.c-jornades__hero-credit) {
+    padding-bottom: 3.25rem;
+  }
 }
 
-.c-quote-background{
-    background-color: rgb(187 160 120);
+.c-jornades__hero-credit {
+  bottom: 0.75rem;
   margin: 0;
-  margin-top: 2rem;
-  
-  // Assegurem l'amplada total sense desplaçaments estranys
+  padding: 0.25rem 0.65rem;
+  font-size: 0.75rem;
+  display: flex;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-align: right;
+
+  &:has(.c-jornades__hero-credit) {
+    padding-bottom: 3.25rem;
+  }
+
+  // En pantalles molt estretes (350px) el centrem perquè no xoquí amb les vores
+  @media (width <= 480px) {
+    left: 1rem;
+    right: 1rem;
+    text-align: center;
+  }
+}
+
+.c-quote-background {
+  background-color: $color-pergamí;
+  margin: 2rem 0 0;
   width: 100%;
   box-sizing: border-box;
-  
-  // Padding generós dalt i baix, i padding lateral de seguretat 
-  // perquè el text NO s'enganxi mai a la vora de la pantalla en mòbils de 350px
   padding: 2rem 1.5rem;
-  
-  // Si necessites que el text quedi centrat o ben alineat dins de la franja:
   text-align: left;
 
-
-.c-quote{
+  .c-quote {
     padding: 0.5rem;
     text-align: justify;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin: 2rem 0;
 
-    .c-quote__text{
-        font-family: $font-family-quote;
-        font-style: italic;
-        font-size: 1.1em;
-    }
-}
-
-.c-quote-footer{
-    font-family: $font-family-footer;
-}
-}
-
-.c-jornades__article{
-    margin: 3rem 0;
-    padding-top: 2rem;
-    font-family: $font-family;
-
-    h2{
-        font-size: 2rem;
-        font-weight: 500;
+    .c-quote__text {
+      display: block;
+      font-family: $font-family-quote;
+      font-style: italic;
+      font-size: 1rem;
+      color: $color-lila-fosc;
     }
 
-    h3{
-        font-size: 1.8rem;
-        text-decoration: underline;
+    .c-quote__dropcap {
+      font-size: 4rem;
+      line-height: 0.85;
+      padding-right: 0.7rem;
+      font-weight: 700;
+      font-style: normal;
+      color: $color-lila-mitja;
+      filter: drop-shadow(1px 1px 2px $lila-fosc-30);
     }
 
-    p{
-        font-size: 1.2rem;
-        text-align: justify;
-        padding: 0.7rem 0.3rem;
-        font-family: $font-family-footer;
-    }
-
-    a{
-        background-color: rgb(51 130 17);
-        color: white;
-        padding: 0.5rem;
+    .c-quote-footer {
+      margin-top: 1rem;
+      font-family: $font-family-footer;
+      color: $lila-fosc-80;
     }
     
+  }
 }
 
-.c-jornades__section{
-    padding: 2rem 0;
-}
+.c-jornades__article {
+  margin: 3rem 0;
+  padding-top: 2rem;
+  font-family: $font-family;
 
-.c-jornades-titol__gallery{
+  :where(h2, h3) {
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: $color-lila-fosc;
+    margin-top: 0;
+  }
+
+  h2 {
+    font-size: clamp(1.65rem, 2.5vw, 2.2rem);
+    margin-bottom: 1rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid $daurat-calid-45;
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: $lila-fosc-90;
+
+    &::before {
+      content: "";
+      flex: 0 0 auto;
+      width: 1.25rem;
+      height: 2px;
+      border-radius: 999px;
+      background-color: $color-daurat-calid;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.65;
+    text-align: justify;
+    padding: 0.7rem 0.3rem;
     font-family: $font-family-footer;
-    padding: 2rem 0;
+
+    &:first-of-type::first-letter {
+      font-size: 3.6rem;
+      float: left;
+      line-height: 0.85;
+      padding-right: 0.65rem;
+      font-weight: 700;
+      color: $color-daurat-calid;
+      filter: drop-shadow(1px 1px 2px $lila-fosc-30);
+    }
+  }
+
+  a {
+    background-color: $color-lila-fosc;
+    border: $color-blanc-trencat 2px solid;
+    color: $color-gris-clar;
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+
+  // Si dins de l'article hi ha algun enllaç d'acció (<a>), donem un marge superior extra
+  &:has(a) {
+    padding-bottom: 1rem;
+  }
+
+  // Si un paràgraf de l'article conté un enllaç a dins, evitem que la capitular xocqui
+  p:has(a) {
+    a {
+      margin-left: 0.25rem;
+    }
+}
+}
+
+.c-jornades__section {
+  padding: 2rem 0;
+
+  &:has(a) {
+    border-left: 3px solid $color-daurat-calid;
+    padding-left: 1.25rem;
+  }
 
 }
 
-// Aplica una línia entre seccions successives dins de l'article
+// Secció fosca: text clar i guió/vora daurada ben visible
+.c-jornades__section-featured {
+  background-color: $color-lila-profund;
+  color: $color-blanc-suau;
+  padding: 2rem;
+  border-radius: 8px;
+
+  :is(h2, h3, p) {
+    color: $color-daurat-clar;
+  }
+
+  h2 {
+    border-bottom-color: $daurat-clar-45;
+  }
+
+  h3::before {
+    background-color: $color-daurat-clar;
+  }
+
+  p:first-of-type::first-letter {
+    color: $color-daurat-clar;
+  }
+}
+
+// Secció daurada: text fosc per garantir bon contrast
+.c-jornades__section--golden {
+  background-color: $color-daurat-calid;
+  color: $color-lila-fosc;
+  padding: 2rem;
+  border-radius: 8px;
+
+  :where(h2, h3, p) {
+    color: $color-lila-fosc;
+  }
+
+  h2 {
+    border-bottom-color: $lila-fosc-25;
+  }
+
+  h3::before {
+    background-color: $color-lila-fosc;
+  }
+
+  p:first-of-type::first-letter {
+    color: $color-lila-fosc;
+  }
+}
+
+.c-jornades-titol__gallery {
+  font-family: $font-family-footer;
+  padding: 2rem 0;
+  text-decoration: underline;
+}
+
 .c-jornades__section + .c-jornades__section {
-  border-top: 4px solid rgb(187 160 120 / 40%); // Fes servir un to càlid o del color de la paleta
+  border-top: 4px solid $daurat-calid-40;
   margin-top: 2.5rem;
   padding-top: 2.5rem;
 }
 
 .c-divider {
-  border: none;              // Treu l'estil per defecte del navegador
-  border-top: 4px solid rgb(187 160 120); // Linia sòlida amb el teu color càlid
-  width: 100%;               // Ocupa tot l'ample (o posa-li un 80% si la vols centrada i curta)
-  margin: 3rem 0;            // Espai dalt i baix perquè respiri
+  border: none;
+  border-top: 4px solid $color-daurat-calid;
+  width: 100%;
+  margin: 3rem 0;
 }

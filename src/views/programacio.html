@@ -1,16 +1,120 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="ca">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" type="text/css" href="/src/assets/styles/main.scss" />
-  <!-- do not remove this line! -->
-  <title>Programació de la jornada</title>
+  <link rel="stylesheet" type="text/css" href="../assets/styles/main.scss" />
+
+
+  <title>Programacio Jornades d'Història i Literatura Medieval</title>
 </head>
+
 <body>
-    <main>
-        
+  <include src="./views/header.html"></include>
+
+  <div class="l-layout">
+    <include src="views/sidebar.html"></include>
+
+    <main class="l-programacio-main">
+
+      <header class="c-programacio__header">
+        <h1 class="c-programacio__main-title">Programació de les Jornades</h1>
+
+      </header>
+      <p class="c-programacio__hero-credit">
+        Foto: Patrimoni Cultural (Generalitat de Catalunya)
+      </p>
+
+      <section class="c-activities__hero">
+        <span class="c-activities__kicker">Programa acadèmic</span>
+        <h2 class="c-activities__title">Activitats i ponències magistrals</h2>
+        <p class="c-activities__lead">
+          Taules rodones, seminaris d'arxiu i conferències a càrrec d'especialistes en història
+          medieval mediterrània, cultura escrita i vida urbana.
+        </p>
+      </section>
+
+      <hr class="c-divider" />
+
+      <section class="c-activities__section" aria-labelledby="ponencies-titol">
+        <div class="c-activities__section-head">
+          <h2 id="ponencies-titol">Ponents convidats</h2>
+          <p>
+            Coneix els investigadors i investigadores que protagonitzaran les sessions
+            principals de les jornades.
+          </p>
+        </div>
+
+        <!-- Retícula de ponents maquetada amb Flexbox (sense .row ni .col-*) -->
+        <div class="c-speakers-grid">
+          <article class="c-speaker-card">
+            <div class="c-speaker-card__meta">
+              <span class="c-speaker-card__slot">Dijous · 10:00 h</span>
+              <span class="c-speaker-card__role">Ponència inaugural</span>
+            </div>
+            <h3 class="c-speaker-card__name">Dra. Núria Puig i Soler</h3>
+            <p class="c-speaker-card__affiliation">Universitat de Barcelona</p>
+            <p class="c-speaker-card__topic">
+              «Fiscalitat reial, consells municipals i pactisme a les viles de la Corona d'Aragó
+              (segles XIII–XIV)».
+            </p>
+          </article>
+
+          <article class="c-speaker-card">
+            <div class="c-speaker-card__meta">
+              <span class="c-speaker-card__slot">Dijous · 16:30 h</span>
+              <span class="c-speaker-card__role">Conferència</span>
+            </div>
+            <h3 class="c-speaker-card__name">Dr. Martí Soldevila i Camps</h3>
+            <p class="c-speaker-card__affiliation">Universitat Autònoma de Barcelona</p>
+            <p class="c-speaker-card__topic">
+              «Escriptura notarial, inventaris domèstics i cultura material a la Mediterrània
+              baixmedieval».
+            </p>
+          </article>
+
+          <article class="c-speaker-card">
+            <div class="c-speaker-card__meta">
+              <span class="c-speaker-card__slot">Divendres · 11:30 h</span>
+              <span class="c-speaker-card__role">Seminari</span>
+            </div>
+            <h3 class="c-speaker-card__name">Dra. Clara Benet i Miró</h3>
+            <p class="c-speaker-card__affiliation">Universitat de València</p>
+            <p class="c-speaker-card__topic">
+              «Xarxes monàstiques, patrimoni femení i devocions compartides en terres
+              valencianes».
+            </p>
+          </article>
+
+          <article class="c-speaker-card">
+            <div class="c-speaker-card__meta">
+              <span class="c-speaker-card__slot">Dissabte · 12:00 h</span>
+              <span class="c-speaker-card__role">Cloenda</span>
+            </div>
+            <h3 class="c-speaker-card__name">Dr. Bernat Rovira i Sala</h3>
+            <p class="c-speaker-card__affiliation">Universitat de Girona</p>
+            <p class="c-speaker-card__topic">
+              «Frontera, diplomàcia i circulació de sabers entre el món cristià i l'islam
+              medieval».
+            </p>
+          </article>
+        </div>
+      </section>
     </main>
+  </div>
+
+  <script type="module" src="../assets/scripts/main.js"></script>
 </body>
+
+</html>
+
+
+</div>
+</main>
+</div>
+<script type="module" src="../assets/scripts/main.js"></script>
+</body>
+
 </html>
