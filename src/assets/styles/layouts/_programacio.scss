@@ -11,7 +11,7 @@ a {
   cursor: pointer;
 }
 
-// 1. Contenidor pare que posa el sidebar a l'esquerra i el contingut a la dreta
+// Contenidor pare que posa el sidebar a l'esquerra i el contingut a la dreta
 .l-layout {
   display: flex;
   flex-direction: row;
@@ -28,7 +28,7 @@ a {
 }
 
 .c-programacio__header {
-  // 1. Foto de fons amb capa lila fosca per sobre
+  // Foto de fons amb capa lila fosca per sobre
   background-image:
     linear-gradient($lila-fosc-15, $lila-fosc-20),
     url('/src/assets/images/ponencies.jpg');
@@ -36,7 +36,7 @@ a {
   background-position: center;
   background-repeat: no-repeat;
 
-  // 2. Ombra interior difuminada per donar profunditat al paisatge
+  // Ombra interior difuminada per donar profunditat al paisatge
   box-shadow:
     inset 0 0 60px $negre-25,
     0 4px 12px $gris-ombra-30;
@@ -143,7 +143,7 @@ a {
   }
 
 
-// Retícula maquetada amb Flexbox (sense classes .row ni .col-* de Bootstrap)
+// Retícula maquetada amb Flexbox 
 .c-speakers-grid {
   display: flex;
   flex-wrap: wrap;

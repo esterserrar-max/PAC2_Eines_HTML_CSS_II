@@ -11,7 +11,7 @@ a {
   cursor: pointer;
 }
 
-// 1. Contenidor pare que posa el sidebar a l'esquerra i el contingut a la dreta
+// Contenidor pare que posa el sidebar a l'esquerra i el contingut a la dreta
 .l-layout {
   display: flex;
   flex-direction: row;
@@ -19,7 +19,7 @@ a {
   width: 100%;
 }
 
-// 2. Estils del Sidebar (Columna esquerra)
+// Estils del Sidebar (Columna esquerra)
 .c-sidebar {
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@ a {
 }
 
 .c-jornades__header {
-  // 1. Foto de fons amb capa lila fosca per sobre
+  // Foto de fons amb capa lila fosca per sobre
   background-image:
     linear-gradient($lila-fosc-15, $lila-fosc-20),
     url('/src/assets/images/hero.jpeg');
@@ -47,7 +47,7 @@ a {
   background-position: center;
   background-repeat: no-repeat;
 
-  // 2. Ombra interior difuminada per donar profunditat al paisatge
+  // Ombra interior difuminada per donar profunditat al paisatge
   box-shadow:
     inset 0 0 60px $negre-25,
     0 4px 12px $gris-ombra-30;
@@ -233,7 +233,7 @@ a {
 
 }
 
-// Secció fosca: text clar i guió/vora daurada ben visible
+// Secció fosca: text clar i vora daurada 
 .c-jornades__section-featured {
   background-color: $color-lila-profund;
   color: $color-blanc-suau;
@@ -257,7 +257,7 @@ a {
   }
 }
 
-// Secció daurada: text fosc per garantir bon contrast
+// Secció daurada i text fosc 
 .c-jornades__section--golden {
   background-color: $color-daurat-calid;
   color: $color-lila-fosc;

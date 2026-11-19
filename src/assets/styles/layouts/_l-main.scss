@@ -7,7 +7,7 @@
   padding: 0;
 }
 
-// 1. Fons de la portada
+// Fons de la portada
 .l-main-img {
   background-image: url('/src/assets/images/vitrall4.jpg');
   background-size: cover;
@@ -26,7 +26,7 @@
   }
 }
 
-// 1. DISSENY PER A MÒBIL (Per defecte)
+// DISSENY PER A MÒBIL 
 .l-main__poster-grid {
   position: relative;
   z-index: 1;
@@ -97,7 +97,7 @@
 }
 
 
-// 2. DISSENY PER A ORDINADOR (A partir de 768px)
+// DISSENY PER A ORDINADOR (A partir de 768px)
 @supports (display: grid) {
   @supports (display: grid) {
   @media (width >= 768px) {
@@ -116,7 +116,7 @@
       }
     }
 
-    // --- 1. ESTILS COMUNS DE FORMA I MIDES PER ALS DOS BOTONS ---
+    // --- ESTILS COMUNS DE FORMA I MIDES PER ALS DOS BOTONS ---
     .l-main__poster-link-concurs a,
     .l-main__poster-link-programa a {
       display: flex;
@@ -153,7 +153,7 @@
       transition: all 0.3s ease;
     }
 
-    // --- 2. CONCURS (Columna 1, Fila 1 - A l'esquerra de tot) ---
+    // CONCURS (Columna 1, Fila 1 - A l'esquerra de tot) ---
     .l-main__poster-link-concurs {
       grid-column: 1 / 2;
       grid-row: 1 / 2;
@@ -174,7 +174,7 @@
       }
     }
 
-    // --- 3. PROGRAMA (Columna 3, Fila 1 - A la dreta de tot) ---
+    // --- PROGRAMA (Columna 3, Fila 1 - A la dreta de tot) ---
     .l-main__poster-link-programa {
       grid-column: 3 / 4;
       grid-row: 1 / 2;
@@ -198,7 +198,7 @@
 }
 
 
-    // El títol al bell mig del pòster
+    // El títol al mig del pòster
     .l-main__poster-header {
       grid-column: 1 / 4;
       grid-row: 2 / 4;
