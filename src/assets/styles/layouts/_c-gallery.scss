@@ -1,83 +1,100 @@
 
-// Disposicio galeria en estil de disseny mosaic
-.c-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  padding: 1rem;
-  border-radius: 8px;
+@layer reset, layout, components;
 
-  // ÚS DE :has() AMB CRITERI:
-  // Si la galeria conté una imatge destacada, l'emmarquem amb un fons suau
-  &:has(.c-gallery__item--featured) {
-    background-color: rgb(187 160 120 / 12%);
-    border: 1px solid rgb(187 160 120 / 35%);
-  }
-
-  &__item {
-    margin: 0;
-    border-radius: 6px;
-    overflow: hidden;
-
-    // ÚS DE :has() EN L'ÍTEM:
-    // Si l'ítem conté una llegenda (.c-gallery__caption), li donem fons blanc i ombra suau
-    &:has(.c-gallery__caption) {
-      background-color: #fff;
-      padding-bottom: 0.5rem;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
-    }
-
-    &--featured {
-      grid-column: 1 / 3;
-    }
-  }
-
-  // ÚS DE :is() PER AGRUPAR ELEMENTS INTERNS:
-  :is(&__img, &__caption) {
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-
-  &__img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-
-    .c-gallery__item:hover & {
-      transform: scale(1.03);
-    }
-  }
-
-  &__caption {
-    font-size: 0.85rem;
-    margin-top: 0.4rem;
-    padding: 0 0.5rem;
-    text-align: center;
-    color: #555;
-  }
-
-  // --- VERSIÓ ESCRITORI (a partir de 768px) ---
-  @media (width >= 768px) {
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 1.5rem;
-    padding: 2rem;
+@layer layout {
+  // Disposicio galeria en estil de disseny mosaic
+  .c-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 
     &__item {
+      margin: 0;
+      overflow: hidden;
+
       &--featured {
         grid-column: 1 / 3;
-        grid-row: 1 / 3;
-
-        // Fem que la imatge destacada ompli tota l'alçada de les 2 files
-        /* stylelint-disable-next-line max-nesting-depth */
-        .c-gallery__img {
-          height: calc(100% - 2rem); // Deixa espai per al caption si en té
-          min-height: 440px;
-        }
       }
     }
 
     &__img {
-      height: 220px;
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    // --- VERSIÓ ESCRITORI (a partir de 768px) ---
+    @media (width >= 768px) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+
+      &__item {
+        &--featured {
+          grid-column: 1 / 3;
+          grid-row: 1 / 3;
+
+          // Fem que la imatge destacada ompli tota l'alçada de les 2 files
+          /* stylelint-disable-next-line max-nesting-depth */
+          .c-gallery__img {
+            height: calc(100% - 2rem); // Deixa espai per al caption si en té
+            min-height: 440px;
+          }
+        }
+      }
+
+      &__img {
+        height: 220px;
+      }
+    }
+  }
+}
+
+@layer components {
+  .c-gallery {
+    padding: 1rem;
+    border-radius: 8px;
+
+    // ÚS DE :has() AMB CRITERI:
+    // Si la galeria conté una imatge destacada, l'emmarquem amb un fons suau
+    &:has(.c-gallery__item--featured) {
+      background-color: rgb(187 160 120 / 12%);
+      border: 1px solid rgb(187 160 120 / 35%);
+    }
+
+    &__item {
+      border-radius: 6px;
+
+      // ÚS DE :has() EN L'ÍTEM:
+      // Si l'ítem conté una llegenda (.c-gallery__caption), li donem fons blanc i ombra suau
+      &:has(.c-gallery__caption) {
+        background-color: #fff;
+        padding-bottom: 0.5rem;
+        box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
+      }
+    }
+
+    // ÚS DE :is() PER AGRUPAR ELEMENTS INTERNS:
+    :is(&__img, &__caption) {
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    &__img {
+      .c-gallery__item:hover & {
+        transform: scale(1.03);
+      }
+    }
+
+    &__caption {
+      font-size: 0.85rem;
+      margin-top: 0.4rem;
+      padding: 0 0.5rem;
+      text-align: center;
+      color: #555;
+    }
+
+    @media (width >= 768px) {
+      padding: 2rem;
     }
   }
 }

@@ -1,85 +1,88 @@
 @use "../variables";
+@layer reset, layout, components;
 
-body{
-  padding-top: 3.75rem;
-}
 
-.c-sidebar {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+@layer layout {
+  .c-sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  // Definim el sidebar com a contenidor de consulta
-  container-type: inline-size;
-  container-name: sidebar;
-  flex: 0 0 320px;
-  min-height: calc(100dvh - 3.75rem);
-  padding: 3rem 2rem;
-  box-sizing: border-box;
-  position: sticky;
-  top: 3.75rem;
-  height: 100vh;
-  background:
-    linear-gradient(variables.$sidebar-overlay-60, variables.$sidebar-overlay-65),
-    url('/src/assets/images/vitrall3.jpg');
-  background-repeat: repeat;
-  background-size: contain;
-  background-position: center center;
-  backdrop-filter: blur(4px);
-  border-right: 2px solid variables.$sidebar-border-20;
+    // Definim el sidebar com a contenidor de consulta
+    container-type: inline-size;
+    container-name: sidebar;
+    flex: 0 0 320px;
+    min-height: calc(100dvh - 3.75rem);
+    padding: 3rem 2rem;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    height: 100vh;
 
-  &__header {
-    text-align: left;
+    // Si el sidebar és més ample que 340px, tindrà més padding i estarà centrat.
+    @container sidebar (min-width: 340px) {
+      padding: 3.5rem 2.5rem;
 
-    h1 {
-      // Escala segons l'ample real del sidebar (cqi)
-      font-size: clamp(1.35rem, 6cqi, 1.85rem);
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-      color: white;
-    }
-
-    .l-main__poster-date {
-      font-size: clamp(0.95rem, 4cqi, 1.15rem);
-      font-weight: 600;
-      color: rgb(255 255 255 / 85%);
-      letter-spacing: 0.5px;
-      margin-bottom: 1.25rem;
-    }
-
-    .c-jornades__inscripcio-link {
-      display: inline-block;
-      background-color: white;
-      color: #241338;
-      padding: 0.55rem 1rem;
-      border-radius: 6px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background-color 0.25s ease, color 0.25s ease;
-
-      &:hover {
-        background-color: #bba078;
-        color: #241338;
+      .c-sidebar__header {
+        text-align: center;
       }
     }
   }
 
-  // Si el sidebar és més ample que 340px, tindrà més padding i estarà centrat. 
-  @container sidebar (min-width: 340px) {
-    padding: 3.5rem 2.5rem;
-
-    .c-sidebar__header {
-      text-align: center;
+  // Amagar-lo en mòbils
+  @media (width <= 768px) {
+    .c-sidebar {
+      display: none;
     }
   }
 }
 
-// Amagar-lo en mòbils
-@media (width <= 768px) {
+@layer components {
   .c-sidebar {
-    display: none;
+    background:
+      linear-gradient(variables.$sidebar-overlay-60, variables.$sidebar-overlay-65),
+      url('/src/assets/images/vitrall3.jpg');
+    background-repeat: repeat;
+    background-size: contain;
+    background-position: center center;
+    backdrop-filter: blur(4px);
+    border-right: 2px solid variables.$sidebar-border-20;
+
+    &__header {
+      text-align: left;
+
+      h1 {
+        // Escala segons l'ample real del sidebar (cqi)
+        font-size: clamp(1.35rem, 6cqi, 1.85rem);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: white;
+      }
+
+      .l-main__poster-date {
+        font-size: clamp(0.95rem, 4cqi, 1.15rem);
+        font-weight: 600;
+        color: rgb(255 255 255 / 85%);
+        letter-spacing: 0.5px;
+        margin-bottom: 1.25rem;
+      }
+
+      .c-jornades__inscripcio-link {
+        display: inline-block;
+        background-color: white;
+        color: #241338;
+        padding: 0.55rem 1rem;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.25s ease, color 0.25s ease;
+
+        &:hover {
+          background-color: #bba078;
+          color: #241338;
+        }
+      }
+    }
   }
 }
-
-

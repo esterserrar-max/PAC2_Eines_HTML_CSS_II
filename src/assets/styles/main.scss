@@ -3,20 +3,20 @@
  * Do not include SCSS code in this file.
  */
 
-
+@layer reset, layout, components;
 
 /**
  * Import dependencies & variables first
  */
-@import "variables"; 
+@import "variables";
 
 /**
- * Import Bootstrap from node_modules
+ * Import Bootstrap (fora de @layer perquè Stylelint no marqui invalid position en @import)
  */
-@import "bootstrap/scss/bootstrap";
+
 
 /**
- * Import layouts
+ * Import layouts & components
  */
 @import "./layouts/l-main";
 @import "./c.jornades";

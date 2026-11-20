@@ -1,216 +1,244 @@
-/* stylelint-disable max-nesting-depth */
 @use "../variables";
+@layer reset, layout, components;
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-// Fons de la portada
-.l-main-img {
-  background-image: url('/src/assets/images/vitrall4.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  min-height: 100vh;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-color: rgb(172 152 132 / 51%);
-    z-index: 0;
+@layer reset {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 }
 
-// DISSENY PER A MÒBIL
-.l-main__poster-grid {
-  container-type: inline-size;
-  container-name: poster-grid;
-  position: relative;
-  z-index: 1;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
-  color: white;
-  font-family: $font-family-poster;
-}
+@layer layout {
+  // Fons de la portada
+  .l-main-img {
+    min-height: 100dvh;
+    position: relative;
 
-.l-main__poster-header {
-  margin: auto 0;
-  text-align: center;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+  }
 
-  h1 {
-    font-size: 1.8rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+  // DISSENY PER A MÒBIL
+  .l-main__poster-grid {
+    container-type: inline-size;
+    container-name: poster-grid;
+    position: relative;
+    z-index: 1;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .l-main__poster-header {
+    margin: auto 0;
+  }
+
+  // Estils comuns per a les llistes i enllaços al mòbil
+  .l-main__poster-link-concurs,
+  .l-main__poster-link-programa {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
     a {
+      display: block;
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+
+  // DISSENY PER A ORDINADOR (A partir de 768px)
+  @supports (display: grid) {
+    @media (width >= 768px) {
+      .l-main__poster-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr; // Esquerra (Concurs) | Centre (Espai central) | Dreta (Programa)
+        grid-template-rows: auto auto;      // Fila 1: botons/arcs | Fila 2: títol/capçalera
+        min-height: 100dvh;
+        padding: 3rem;
+        gap: 1.5rem;
+        align-items: center;
+
+        @media (width >= 1200px) {
+          max-width: 1300px;
+          margin-inline: auto;
+          width: 100%;
+        }
+      }
+
+      // --- ESTILS COMUNS DE FORMA I MIDES PER ALS DOS BOTONS ---
+      .l-main__poster-link-concurs a,
+      .l-main__poster-link-programa a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 260px;
+        min-height: 310px;
+        padding: 2rem 1.5rem;
+        white-space: normal;
+        overflow-wrap: break-word;
+      }
+
+      // CONCURS (Columna 1, Fila 1 - A l'esquerra de tot)
+      .l-main__poster-link-concurs {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        place-self: center;
+      }
+
+      // PROGRAMA (Columna 3, Fila 1 - A la dreta de tot)
+      .l-main__poster-link-programa {
+        grid-column: 3 / 4;
+        grid-row: 1 / 2;
+        place-self: center;
+      }
+
+      // Títol a sota dels arcs
+      .l-main__poster-header {
+        grid-column: 1 / 4;
+        grid-row: 2 / 3;
+        margin: 0;
+      }
+
+      // Adaptació segons l'amplada real del contenidor poster-grid
+      @container poster-grid (min-width: 1100px) {
+        .l-main__poster-link-concurs a,
+        .l-main__poster-link-programa a {
+          width: 260px;
+          min-height: 450px;
+        }
+      }
+    }
+  }
+}
+
+@layer components {
+  .l-main-img {
+    background-image: url("/src/assets/images/vitrall4.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    &::before {
+      background-color: rgb(172 152 132 / 51%);
+    }
+  }
+
+  .l-main__poster-grid {
+    color: white;
+    font-family: variables.$font-family-poster;
+  }
+
+  .l-main__poster-header {
+    text-align: center;
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+
+      a {
+        text-decoration: none;
+        color: white;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .l-main__poster-date {
+      font-size: 1rem;
+      letter-spacing: 1px;
+      opacity: 0.8;
+      text-transform: uppercase;
+    }
+  }
+
+  .l-main__poster-link-concurs,
+  .l-main__poster-link-programa {
+    list-style: none;
+
+    a {
+      text-align: center;
       text-decoration: none;
       color: white;
+      font-weight: 600;
+      padding: 1.3rem 1.5rem;
+      border: 1px solid rgb(255 255 255 / 40%);
+      border-radius: 4px;
+      background: rgb(255 255 255 / 5%);
 
-      :hover {
+      &:hover {
         cursor: pointer;
       }
     }
   }
 
-  .l-main__poster-date {
-    font-size: 1rem;
-    letter-spacing: 1px;
-    opacity: 0.8;
-    text-transform: uppercase;
-  }
-}
-
-// Estils comuns per a les llistes i enllaços al mòbil
-.l-main__poster-link-concurs,
-.l-main__poster-link-programa {
-  list-style: none;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-  a {
-    display: block;
-    width: 100%;
-    max-width: 280px;
-    text-align: center;
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    padding: 1.3rem 1.5rem;
-    border: 1px solid rgb(255 255 255 / 40%);
-    border-radius: 4px;
-    background: rgb(255 255 255 / 5%);
-
-    :hover {
-      cursor: pointer;
-    }
-  }
-}
-
-// DISSENY PER A ORDINADOR (A partir de 768px)
-@supports (display: grid) {
-  @media (width >= 768px) {
-    .l-main__poster-grid {
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr; // Esquerra (Concurs) | Centre (Espai central) | Dreta (Programa)
-      grid-template-rows: auto;           // S'adapta automàticament al contingut
-      min-height: 100vh;
-      padding: 3rem;
-      gap: 1rem;
-
-      @media (width >= 1200px) {
-        max-width: 1300px;
-        margin-inline: auto;
-        width: 100%;
-      }
-    }
-
-    // --- ESTILS COMUNS DE FORMA I MIDES PER ALS DOS BOTONS ---
-    .l-main__poster-link-concurs a,
-    .l-main__poster-link-programa a {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 260px;
-      min-height: 310px;
-
-      // Forma d'arc gòtic simètrica
-      border-radius: 90px 90px 8px 8px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      white-space: normal;
-      overflow-wrap: break-word;
-
-      // Vora i efectes compartits
-      border: 2px solid rgb(255 255 255 / 70%);
-      background-size: cover;
-      background-position: center;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 0 25px rgb(0 243 255 / 40%), inset 0 0 15px rgb(255 255 255 / 30%);
-      transition: all 0.3s ease;
-    }
-
-    // Adaptació segons l'amplada real del contenidor poster-grid
-    @container poster-grid (min-width: 1100px) {
+  @supports (display: grid) {
+    @media (width >= 768px) {
       .l-main__poster-link-concurs a,
       .l-main__poster-link-programa a {
-        width: 260px;
-        min-height: 450px;
+        // Forma d'arc gòtic simètrica
+        border-radius: 90px 90px 8px 8px;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+
+        // Vora i efectes compartits
+        border: 2px solid rgb(255 255 255 / 70%);
+        background-size: cover;
+        background-position: center;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 25px rgb(0 243 255 / 40%), inset 0 0 15px rgb(255 255 255 / 30%);
+        transition: all 0.3s ease;
       }
 
-      .l-main__poster-header {
-        grid-column: 1 / 4;
-        grid-row: 2 / 4;
-        margin: 0;
-      }
-    }
-
-    // CONCURS (Columna 1, Fila 1 - A l'esquerra de tot)
-    .l-main__poster-link-concurs {
-      grid-column: 1 / 2;
-      grid-row: 1 / 2;
-      place-self: center;
-
-      a {
+      .l-main__poster-link-concurs a {
         background: linear-gradient(rgb(10 10 30 / 60%), rgb(10 10 30 / 60%)),
-                    url('/src/assets/images/vitrall3.jpg');
+          url("/src/assets/images/vitrall3.jpg");
         background-size: cover;
         background-position: center;
 
         &:hover {
           background: linear-gradient(rgb(10 10 30 / 30%), rgb(10 10 30 / 30%)),
-                      url('/src/assets/images/vitrall3.jpg');
+            url("/src/assets/images/vitrall3.jpg");
           border-color: #00f3ff;
           box-shadow: 0 0 35px rgb(0 243 255 / 70%);
         }
       }
-    }
 
-    // PROGRAMA (Columna 3, Fila 1 - A la dreta de tot)
-    .l-main__poster-link-programa {
-      grid-column: 3 / 4;
-      grid-row: 1 / 2;
-      place-self: center;
-
-      a {
+      .l-main__poster-link-programa a {
         background: linear-gradient(rgb(10 10 30 / 60%), rgb(10 10 30 / 60%)),
-                    url('/src/assets/images/vitrall2.jpg');
+          url("/src/assets/images/vitrall2.jpg");
         background-size: cover;
         background-position: center;
 
         &:hover {
           background: linear-gradient(rgb(10 10 30 / 30%), rgb(10 10 30 / 30%)),
-                      url('/src/assets/images/vitrall2.jpg');
+            url("/src/assets/images/vitrall2.jpg");
           border-color: #00f3ff;
           box-shadow: 0 0 35px rgb(0 243 255 / 70%);
         }
       }
-    }
-  }
 
-  // El títol al mig del pòster
-  .l-main__poster-header {
-    grid-column: 1 / 4;
-    grid-row: 2 / 4;
-    margin: 2rem;
-
-    h1 {
-      font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      .l-main__poster-header h1 {
+        font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+      }
     }
   }
 }
+
