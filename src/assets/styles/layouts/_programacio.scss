@@ -76,7 +76,7 @@
 
   .c-programacio__hero-credit {
     bottom: 0.75rem;
-    margin: 0;
+    margin: 0 ;
     padding: 0.25rem 0.65rem;
     font-size: 0.75rem;
     display: flex;
@@ -92,60 +92,59 @@
     }
   }
 
-  .c-activities__hero {
-    &__kicker {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: variables.$color-daurat-clar;
-      margin-bottom: 0.5rem;
-    }
-
-    &__title {
-      font-family: variables.$font-family-poster;
-      font-size: clamp(1.9rem, 3.5vw, 2.75rem);
-      line-height: 1.15;
-      margin: 0 0 0.85rem;
-      color: variables.$color-blanc-trencat;
-    }
-
-    &__lead {
-      max-width: 65ch;
-      font-size: 1rem;
-      line-height: 1.65;
-      color: variables.$color-gris-clar;
-      margin: 0;
-    }
-
-    &__section {
-      padding: 1rem 0 2rem;
-    }
+  .c-activities {
+  &__hero {
+    margin: 2rem 0;
   }
 
-  .c-activities__section {
-    &__section-head {
-      margin-bottom: 2rem;
-
-      h2 {
-        font-size: clamp(1.5rem, 2.5vw, 2rem);
-        font-weight: 700;
-        color: variables.$color-lila-fosc;
-        padding-bottom: 0.45rem;
-        border-bottom: 2px solid variables.$color-daurat-calid;
-        margin-bottom: 0.65rem;
-      }
-
-      p {
-        font-size: 1rem;
-        line-height: 1.6;
-        color: variables.$lila-fosc-80;
-      }
-    }
+  &__title {
+    font-family: variables.$font-family;
+    font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+    line-height: 1.15;
+    margin: 0 0 0.85rem;
+    color: variables.$color-negre;
+    text-align: left;
   }
 
-  // Retícula maquetada amb Flexbox + Container Query
+  &__lead {
+    max-width: 65ch;
+    font-size: 1rem;
+    text-align: justify;
+    line-height: 1.65;
+    font-family: $font-family-footer;
+    color: variables.$color-negre;
+    margin: 0;
+  }
+}
+
+.c-activities__section-head {
+  margin-bottom: 2rem;
+
+  h2 {
+    font-family: variables.$font-family;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 700;
+    color: variables.$color-lila-fosc;
+    padding-bottom: 0.45rem;
+    margin-bottom: 0.65rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: variables.$lila-fosc-80;
+    font-family: $font-family-footer;
+  }
+}
+}
+
+.day{
+  margin:4rem 1rem;
+  font-family: variables.$font-family;
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  color: variables.$color-negre;
+}
+
   .c-speakers-grid {
     display: flex;
     flex-wrap: wrap;
@@ -192,10 +191,8 @@
       gap: 0.4rem;
       margin-bottom: 0.85rem;
       font-size: 0.8rem;
-    }
 
-    @container speaker-card (min-width: 340px) {
-      .c-speaker-card__meta {
+      @container speaker-card (min-width: 340px) {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -238,6 +235,67 @@
       font-size: 0.98rem;
       line-height: 1.6;
       color: variables.$color-lila-fosc;
+    }
+  }
+
+
+@layer layout {
+  .c-extras-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 56rem; 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &__item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem 1rem;
+    }
+
+    &__title {
+      flex: 1 1 16rem;
+      min-width: 0;
+    }
+
+    &__tag {
+      flex-shrink: 0;
+    }
+  }
+}
+
+@layer components {
+  .c-extras-list {
+    &__item {
+      background-color: variables.$color-pergamí;
+      border: 1px solid variables.$color-daurat-calid;
+      border-left: 4px solid variables.$color-lila-fosc;
+      border-radius: 6px;
+      padding: 0.85rem 1.15rem;
+    }
+
+    &__time {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: variables.$color-lila-mitja;
+    }
+
+    &__title {
+      font-weight: 600;
+      color: variables.$color-lila-fosc;
+    }
+
+    &__tag {
+      background-color: variables.$color-lila-fosc;
+      color: variables.$color-daurat-clar;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
     }
   }
 }
