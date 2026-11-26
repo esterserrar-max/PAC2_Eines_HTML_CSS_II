@@ -4,13 +4,128 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" type="text/css" href="/src/assets/styles/main.scss" />
+  <link rel="stylesheet" type="text/css" href="../assets/styles/main.scss" />
   <!-- do not remove this line! -->
   <title>Formulari inscripcio al concurs literari</title>
 </head>
+
 <body>
-    <main>
-        
+  <include src="./views/header.html"></include>
+
+  <div class="l-layout-concurs">
+    <include src="views/sidebar.html"></include>
+
+    <main class="l-concurs-main">
+
+      <header class="c-concurs__header">
+        <h1 class="c-concurs__main-title">Concurs Literari</h1>
+      </header>
+
+      <p class="c-concurs__hero-credit">
+        Foto: Patrimoni Cultural (Generalitat de Catalunya)
+      </p>
+
+      <section class="c-concurs__intro" aria-labelledby="concurs-bases-titol">
+        <h2 id="concurs-bases-titol" class="c-concurs__title">
+          Inscripció i participació
+        </h2>
+        <p class="c-concurs__lead">
+          Envia la teva proposta literària o creativa vinculada a la història i la
+          literatura medieval. Omple el formulari per formalitzar la inscripció.
+        </p>
+        <p class="c-concurs__lead">
+          Les persones guanyadores d'aquesta edició es proclamaran durant el sopar, on també rebran els seus premis.
+          S'atorgaran tres guardons: </p>
+        <ul class="c-concurs__lead-list">
+          <li>
+            Primer classificat:
+            <ul class="c-concurs__lead-sublist">
+              <li>
+                Pack d'una nit de cap de Setmana a Vilafranca del Penedès i una panera
+                amb productes locals dels voltants Monsteri d'Escaladei.
+              </li>
+            </ul>
+          </li>
+          <li>Segon i tercer classificat:
+            <ul class="c-concurs__lead-sublist">
+              <li>Panera de productes locals dels voltants del Monestir d'Escaladei.</li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+
+      <section class="c-concurs__form-section" aria-labelledby="formulari-titol">
+        <h2 id="formulari-titol" class="c-concurs__subtitle">
+          Formulari d'inscripció
+        </h2>
+
+        <form name="inscripcio-concurs" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+          class="c-concurs-form">
+          <input type="hidden" name="form-name" value="inscripcio-concurs" />
+
+          <p class="c-concurs-form__honeypot">
+            <label>
+              No emplenis aquest camp si ets humà:
+              <input type="text" name="bot-field" />
+            </label>
+          </p>
+
+
+          <div class="c-concurs-form__row">
+            <div class="c-concurs-form__field">
+              <label for="concurs-nom" class="c-concurs-form__label">
+                Nom i cognoms
+              </label>
+              <input id="concurs-nom" name="nom_participant" type="text" class="c-concurs-form__input" required />
+            </div>
+
+            <div class="c-concurs-form__field">
+              <label for="concurs-correu" class="c-concurs-form__label">
+                Correu electrònic
+              </label>
+              <input id="concurs-correu" name="correu_participant" type="email" class="c-concurs-form__input"
+                required />
+            </div>
+          </div>
+
+          <div class="c-concurs-form__field">
+            <label for="concurs-categoria" class="c-concurs-form__label">
+              Categoria
+            </label>
+            <select id="concurs-categoria" name="categoria" class="c-concurs-form__select" required>
+              <option value="">Tria una categoria</option>
+              <option value="relat-curt">Relat curt medieval</option>
+              <option value="poesia">Poesia i trobadors</option>
+              <option value="cronica-assaig">Assaig i divulgació històrica</option>
+            </select>
+          </div>
+
+          <div class="c-concurs-form__field">
+            <label for="concurs-titol" class="c-concurs-form__label">
+              Títol de l'obra
+            </label>
+            <input id="concurs-titol" name="titol_obra" type="text" class="c-concurs-form__input" required />
+          </div>
+
+          <div class="c-concurs-form__field">
+            <label for="concurs-resum" class="c-concurs-form__label">
+              Breu resum o comentaris
+            </label>
+            <textarea id="concurs-resum" name="resum_obra" rows="4" class="c-concurs-form__textarea"></textarea>
+          </div>
+
+          <button type="submit" class="c-concurs-form__submit">
+            Enviar inscripció
+          </button>
+
+          <p id="concurs-estat" class="c-concurs-form__status" role="status" aria-live="polite" hidden></p>
+
+        </form>
+      </section>
     </main>
+  </div>
+    <include src="views/footer.html"></include>
+    <script type="module" src="../assets/scripts/main.js"></script>
 </body>
+
 </html>

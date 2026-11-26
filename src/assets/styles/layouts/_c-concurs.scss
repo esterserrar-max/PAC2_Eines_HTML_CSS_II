@@ -1,0 +1,222 @@
+@use "../variables";
+@layer reset, layout, components;
+
+@layer reset {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+@layer layout {
+  .l-layout-concurs {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    width: 100%;
+  }
+
+  .l-concurs-main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    box-sizing: border-box;
+  }
+
+  .c-concurs {
+    &__intro {
+      margin-block: 1.75rem 2rem;
+      max-width: 95ch;
+    }
+
+    &__form-section {
+      max-width: 60rem;
+      width: 100%;
+    }
+  }
+
+  .c-concurs-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    container-type: inline-size;
+    container-name: concurs-form;
+
+    &__honeypot {
+      display: none;
+    }
+
+    &__row {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+
+      @container concurs-form (min-width: 400px) {
+        flex-direction: row;
+      }
+    }
+
+    &__field {
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 0;
+      min-width: 0;
+      gap: 0.4rem;
+    }
+  }
+}
+
+@layer components {
+  .c-concurs {
+    &__header {
+      background-image:
+        linear-gradient(variables.$lila-fosc-15, variables.$lila-fosc-20),
+        url("/src/assets/images/concurs-hero.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow:
+        inset 0 0 60px variables.$negre-25,
+        0 4px 12px variables.$gris-ombra-30;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      min-height: 320px;
+      border-bottom: 3px solid variables.$color-daurat-calid;
+      padding: 2.5rem 1.5rem;
+    }
+
+    &__main-title {
+      font-family: variables.$font-family-poster;
+      font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.015em;
+      text-wrap: balance;
+      color: variables.$color-blanc-trencat;
+      margin: 0;
+      text-shadow: 0 2px 14px variables.$negre-55;
+    }
+
+    &__hero-credit {
+      margin-top: 0.5rem;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.75rem;
+      line-height: 1.3;
+      letter-spacing: 0.02em;
+      text-align: right;
+
+      @media (width <= 480px) {
+        text-align: center;
+      }
+    }
+
+    &__title {
+      font-family: variables.$font-family;
+      font-size: clamp(1.5rem, 3vw, 2.35rem);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+      color: variables.$color-negre;
+    }
+
+    &__lead {
+      font-family: variables.$font-family-footer;
+      font-size: 1rem;
+      line-height: 1.65;
+      text-align: justify;
+      color: variables.$color-negre;
+      padding: 0.5rem 0;
+    }
+    
+    &__lead-list {
+      margin: 1rem 0;
+      padding-left: 1.5rem;
+      list-style-type: disc;
+      font-family: variables.$font-family-footer;
+      font-size: 1rem;
+      line-height: 1.65;
+      color: variables.$color-negre;
+    }
+
+    &__lead-sublist {
+      margin-top: 0.35rem;
+      margin-bottom: 0.75rem;
+      padding-left: 1.75rem;
+      max-width: 55ch;
+      list-style-type: circle;
+      font-size: 0.95rem;
+    }
+
+    &__subtitle {
+      font-family: variables.$font-family;
+      font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+      font-weight: 700;
+      color: variables.$color-lila-fosc;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .c-concurs-form {
+    background-color: variables.$color-pergami;
+    border: 1px solid variables.$color-daurat-calid;
+    border-left: 5px solid variables.$color-lila-fosc;
+    border-radius: 8px;
+    padding: clamp(1.25rem, 3vw, 2rem);
+    box-shadow: 0 4px 12px variables.$negre-20;
+
+    &__label {
+      font-family: variables.$font-family;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: variables.$color-lila-fosc;
+    }
+
+    :is(&__input, &__select, &__textarea) {
+      width: 100%;
+      padding: 0.7rem 0.85rem;
+      font-family: variables.$font-family-footer;
+      font-size: 0.95rem;
+      color: variables.$color-negre;
+      background-color: variables.$color-blanc-trencat;
+      border: 1px solid variables.$color-daurat-calid;
+      border-radius: 6px;
+
+      &:focus-visible {
+        outline: 2px solid variables.$color-lila-fosc;
+        outline-offset: 2px;
+      }
+    }
+
+    &__textarea {
+      resize: vertical;
+      min-height: 7rem;
+    }
+
+    &__submit {
+      align-self: flex-start;
+      padding: 0.75rem 1.5rem;
+      font-family: variables.$font-family;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: variables.$color-daurat-clar;
+      background-color: variables.$color-lila-fosc;
+      border: 1px solid variables.$color-lila-fosc;
+      border-radius: 6px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: variables.$color-lila-mitja;
+      }
+    }
+  }
+}

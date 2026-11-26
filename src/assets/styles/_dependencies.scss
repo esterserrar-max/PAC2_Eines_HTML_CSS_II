@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "sass:meta";
+
 /**
  * Import any npm dependencies in this file
  * see commented examples below
@@ -5,3 +8,19 @@
 
 // @import "some-node-module";
 // @import "@some-company/some-node-module";
+
+// Funció de conversió de píxels a rem
+@function rem($px, $base: 16) {
+  @return math.div($px, $base) * 1rem;
+}
+
+// Funció fluid que retorna el clamp()
+@function fluid($min-px, $max-px, $min-vw: 360, $max-vw: 1200) {
+  $min-rem: math.div($min-px, 16) * 1rem;
+  $max-rem: math.div($max-px, 16) * 1rem;
+  $slope: math.div($max-px - $min-px, $max-vw - $min-vw);
+  $intercept-rem: math.div($min-px - $slope * $min-vw, 16) * 1rem;
+  $preferred: calc(#{$intercept-rem} + #{$slope * 100vw});
+
+  @return clamp(#{$min-rem}, #{$preferred}, #{$max-rem});
+}

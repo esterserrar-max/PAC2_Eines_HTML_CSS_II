@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ca">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="../assets/styles/main.scss" />
+  <!-- do not remove this line! -->
+  <title>Inscripcio Jornades, Preguntes Frequents i Subscripcio de noticies</title>
+</head>
+
+<body>
+  <include src="./views/header.html"></include>
+
+  <div class="l-layout-registre">
+    <include src="views/sidebar.html"></include>
+
+    <div class="l-registre-column">
+      <main class="l-registre-main c-registre">
+
+        <div class="c-registre__hero-wrap">
+          <div class="c-registre-hero">
+            <div class="c-registre-hero__content">
+              <h1 class="c-registre-hero__title">Jornades, preguntes freqüents i butlletí</h1>
+            </div>
+          </div>
+          <p class="c-registre__hero-credit">
+            Foto: Patrimoni Cultural (Generalitat de Catalunya)
+          </p>
+        </div>
+
+        <div class="c-guia-subscripcio">
+          <div class="c-guia-subscripcio__header">
+            <h2 class="c-guia-subscripcio__title">Reserva la teva plaça i consulta informació</h2>
+            <p class="c-guia-subscripcio__lead">
+              Reserva plaça a les jornades, resol dubtes habituals i apunta't al
+              butlletí per rebre novetats i convocatòries.
+            </p>
+          </div>
+
+          <section class="c-faq" aria-labelledby="faq-titol">
+            <h2 id="faq-titol" class="c-faq__title">Preguntes freqüents</h2>
+
+            <div class="c-faq__list">
+              <details class="c-faq__item">
+                <summary class="c-faq__question">
+                  Com funciona la participació i l'assistència a les jornades?
+                </summary>
+                <div class="c-faq__answer">
+                  <p>
+                    Les places són limitades i es confirmen per ordre d'inscripció. Omple el
+                    formulari corresponent per reservar la teva assistència.
+                  </p>
+                </div>
+              </details>
+
+              <details class="c-faq__item">
+                <summary class="c-faq__question">
+                  Puc donar-me de baixa del butlletí en qualsevol moment?
+                </summary>
+                <div class="c-faq__answer">
+                  <p>
+                    Sí, cada comunicació inclou l'opció per gestionar la subscripció o
+                    cancel·lar-la quan vulguis.
+                  </p>
+                </div>
+              </details>
+            </div>
+          </section>
+
+          <section class="c-jornades-form-section" aria-labelledby="jornades-titol">
+            <h2 id="jornades-titol" class="c-jornades-form-section__title">
+              Inscripció a les jornades
+            </h2>
+            <p class="c-jornades-form-section__lead">
+              Reserva la teva plaça per assistir a les sessions i activitats programades.
+            </p>
+
+            <form name="inscripcio-jornades" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+              class="c-jornades-form">
+              <input type="hidden" name="form-name" value="inscripcio-jornades" />
+
+              <p class="c-jornades-form__honeypot">
+                <label>
+                  No emplenis aquest camp si ets humà:
+                  <input type="text" name="bot-field" />
+                </label>
+              </p>
+
+              <div class="c-jornades-form__row">
+                <div class="c-jornades-form__field">
+                  <label for="jornades-nom" class="c-jornades-form__label">
+                    Nom i cognoms
+                  </label>
+                  <input id="jornades-nom" name="nom_assistent" type="text" class="c-jornades-form__input" required />
+                </div>
+
+                <div class="c-jornades-form__field">
+                  <label for="jornades-correu" class="c-jornades-form__label">
+                    Correu electrònic
+                  </label>
+                  <input id="jornades-correu" name="correu_assistent" type="email" class="c-jornades-form__input"
+                    required />
+                </div>
+              </div>
+
+              <div class="c-jornades-form__row">
+                <div class="c-jornades-form__field">
+                  <label for="jornades-sessio" class="c-jornades-form__label">
+                    Sessió o jornada
+                  </label>
+                  <select id="jornades-sessio" name="sessio_jornada" class="c-jornades-form__select" required>
+                    <option value="">Tria una opció</option>
+                    <option value="jornada-completa">Jornada completa</option>
+                    <option value="sessio-mati">Sessió del matí</option>
+                    <option value="sessio-tarda">Sessió de tarda</option>
+                  </select>
+                </div>
+
+                <div class="c-jornades-form__field">
+                  <label for="jornades-places" class="c-jornades-form__label">
+                    Nombre de places
+                  </label>
+                  <input id="jornades-places" name="nombre_places" type="number" min="1" max="10" value="1"
+                    class="c-jornades-form__input" required />
+                </div>
+              </div>
+
+              <div class="c-jornades-form__field">
+                <label for="jornades-observacions" class="c-jornades-form__label">
+                  Observacions o necessitats d'accessibilitat
+                </label>
+                <textarea id="jornades-observacions" name="observacions_jornades" rows="3"
+                  class="c-jornades-form__textarea"></textarea>
+              </div>
+
+              <button type="submit" class="c-jornades-form__submit">
+                Inscriure'm a les jornades
+              </button>
+
+              <p id="jornades-estat" class="c-jornades-form__status" role="status" aria-live="polite" hidden></p>
+            </form>
+          </section>
+
+          <section class="c-subscripcio" aria-labelledby="subscripcio-titol">
+            <h2 id="subscripcio-titol" class="c-subscripcio__title">Subscriu-te a les novetats</h2>
+            <p class="c-subscripcio__text">
+              Rep avisos puntuals quan hi hagi noves edicions, bases o continguts destacats.
+            </p>
+
+            <form name="subscripcio" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+              class="c-subscripcio__form">
+              <input type="hidden" name="form-name" value="subscripcio" />
+
+              <p class="c-subscripcio__honeypot">
+                <label>
+                  No emplenis aquest camp si ets humà:
+                  <input type="text" name="bot-field" />
+                </label>
+              </p>
+
+              <div class="c-subscripcio__group">
+                <label for="subscripcio-correu" class="c-subscripcio__label">
+                  Correu electrònic
+                </label>
+                <input id="subscripcio-correu" name="correu" type="email" class="c-subscripcio__input"
+                  placeholder="nom@exemple.cat" required />
+                <button type="submit" class="c-subscripcio__submit">
+                  Subscriure'm
+                </button>
+              </div>
+
+              <p class="c-subscripcio__status" role="status" aria-live="polite" hidden></p>
+            </form>
+          </section>
+          </div>
+      </main>
+      
+  </div>
+  </div>
+  <include src="views/footer.html"></include>
+  <script type="module" src="../assets/scripts/main.js"></script>
+</body>
+
+</html>

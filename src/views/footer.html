@@ -1,3 +1,65 @@
-<footer class="uoc-footer">
-  &copy; Universitat Oberta de Catalunya
+<footer class="c-footer">
+  <div class="c-footer__top">
+    <section class="c-subscripcio-footer" aria-labelledby="footer-subscripcio-titol">
+      <h2 id="footer-subscripcio-titol" class="c-subscripcio-footer__title">Subscriu-te a les novetats</h2>
+      <p class="c-subscripcio-footer__text">
+        Rep avisos puntuals quan hi hagi noves edicions, bases o continguts destacats.
+      </p>
+
+      <form name="subscripcio-footer" method="POST" data-netlify="true" netlify-honeypot="bot-field"
+        class="c-subscripcio-footer__form">
+        <input type="hidden" name="form-name" value="subscripcio-footer" />
+
+        <p class="c-subscripcio-footer__honeypot">
+          <label>
+            No emplenis aquest camp si ets humà:
+            <input type="text" name="bot-field" />
+          </label>
+        </p>
+
+        <div class="c-subscripcio-footer__group">
+          <label for="footer-subscripcio-correu" class="c-subscripcio-footer__label">
+            Correu electrònic
+          </label>
+          <input id="footer-subscripcio-correu" name="correu" type="email" class="c-subscripcio-footer__input"
+            placeholder="nom@exemple.cat" required />
+          <button type="submit" class="c-subscripcio-footer__submit">
+            Subscriure'm
+          </button>
+        </div>
+
+        <p class="c-subscripcio-footer__status" role="status" aria-live="polite" hidden></p>
+      </form>
+    </section>
+  </div>
+
+  <div class="c-footer__navs">
+    <nav class="c-footer-informacio" aria-label="Informació del lloc">
+      <p class="c-footer-informacio__titol">Nosaltres</p>
+      <ul class="c-footer-informacio__list">
+        <li class="c-footer-informacio__item"><a href="#">Sobre nosaltres</a></li>
+        <li class="c-footer-informacio__item"><a href="#">Contacte</a></li>
+      </ul>
+    </nav>
+
+    <nav class="c-footer-informacio" aria-label="Xarxes socials">
+      <p class="c-footer-informacio__titol">Xarxes socials</p>
+      <ul class="c-footer-informacio__list">
+        <li class="c-footer-informacio__item"><a href="#" aria-label="Pàgina d'Instagram">Instagram</a></li>
+        <li class="c-footer-informacio__item"><a href="#" aria-label="Pàgina de Tiktok">TikTok</a></li>
+        <li class="c-footer-informacio__item"><a href="#" aria-label="Pàgina del compte X">X</a></li>
+      </ul>
+    </nav>
+
+    <nav class="c-footer-informacio" aria-label="Polítiques legals">
+      <p class="c-footer-informacio__titol">Nota legal</p>
+      <ul class="c-footer-informacio__list">
+        <li class="c-footer-informacio__item"><a href="#">Política de privacitat</a></li>
+        <li class="c-footer-informacio__item"><a href="#">Política de cookies</a></li>
+        <li class="c-footer-informacio__item"><a href="#">Avís legal</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <p class="c-footer__copy">&copy; Universitat Oberta de Catalunya</p>
 </footer>

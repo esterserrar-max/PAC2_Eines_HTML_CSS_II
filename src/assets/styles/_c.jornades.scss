@@ -1,3 +1,4 @@
+@use "./dependencies" as *;
 @layer reset, layout, components;
 
 @layer reset {
@@ -24,22 +25,22 @@
 
   // Estils del Sidebar (Columna esquerra)
   .c-sidebar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 0 0 320px;
-    min-height: 100vh;
-    padding: 3rem 2rem;
-    box-sizing: border-box;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 0 0 320px;
+  min-height: 100vh;
+  padding: rem(48) rem(32);
+  box-sizing: border-box;
+}
 
-  .l-jornades-main {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    padding: 2rem;
-    box-sizing: border-box;
-  }
+.l-jornades-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: rem(32);
+  box-sizing: border-box;
+}
 }
 
 @layer components {
@@ -97,7 +98,7 @@
   }
 
   .c-quote-background {
-    background-color: $color-pergamí;
+    background-color: $color-pergami;
     margin: 2rem 0 0;
     width: 100%;
     box-sizing: border-box;

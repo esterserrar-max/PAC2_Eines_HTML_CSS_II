@@ -52,7 +52,7 @@ document.addEventListener('click', (event) => {
   }
 });
 
-// Tanca el menú amb la tecla Escape
+//** Tanca el menú amb la tecla Escape */ 
 document.addEventListener('keydown', (event) => {
   if (event.key !== 'Escape') return;
 
@@ -71,3 +71,58 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+
+//** Missatge de formulari enviat correctament */
+const forms = document.querySelectorAll('form[data-netlify="true"]');
+
+forms.forEach((form) => {
+  const statusEl = form.querySelector('[role="status"]');
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const body = new URLSearchParams(formData).toString();
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      form.reset();
+      if (statusEl) {
+        statusEl.textContent = "Enviament rebut correctament. Moltes gràcies!";
+        statusEl.hidden = false;
+      }
+    } catch (error) {
+      console.error("Error enviant el formulari:", error);
+      if (statusEl) {
+        statusEl.textContent =
+          "No s'ha pogut completar l'enviament en aquest entorn. Un cop publicat a Netlify funcionarà l'enviament real.";
+        statusEl.hidden = false;
+      }
+    }
+  });
+});
+
+
+//** Inicialització i comprovació si existeix de GLightbox */
+import GLightbox from 'glightbox';
+import 'glightbox/dist/css/glightbox.min.css';
+
+const items = document.querySelectorAll('.glightbox');
+console.log('GLightbox elements:', items.length);
+
+if (items.length > 0) {
+  GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true,
+  });
+}
